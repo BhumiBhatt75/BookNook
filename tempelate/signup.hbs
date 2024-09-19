@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Login-in Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a337f2539b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+    <div class="form-box">
+        <h1 id="title">Sign Up</h1>
+          <form action="/signup" method="post">
+    <div class="input-group">
+        <div class="input-field" id="nameField">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" name="name" placeholder="Name" required>
+        </div>
+        <div class="input-field">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="input-field">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" name="password" placeholder="Password" required>
+        </div>
+    </div>
+    <div class="btn-field">
+        <button type="submit">Sign up</button>
+        <button type="submit">Sign in</button>
+    </div>
+</form>
+
+    </div>
+</div>
+{{!-- <script>
+let signupBtn = document.getElementById("signupBtn");
+let signinBtn = document.getElementById("signinBtn");
+let nameField = document.getElementById("nameField");
+let title = document.getElementById("title");
+
+document.getElementById("signinBtn").onclick = function(){
+            document.getElementById("nameField").style.maxHeight = "65px";
+            document.getElementById("title").innerHTML = "Sign In";
+            document.getElementById("signupBtn").classList.add("disable");
+            document.getElementById("signinBtn").classList.remove("disable");
+        }
+
+        document.getElementById("signupBtn").onclick = function(){
+            document.getElementById("nameField").style.maxHeight = "65px";
+            document.getElementById("title").innerHTML = "Sign Up";
+            document.getElementById("signupBtn").classList.remove("disable");
+            document.getElementById("signinBtn").classList.add("disable");
+        }
+
+</script> --}}
+</body>
+</html>      

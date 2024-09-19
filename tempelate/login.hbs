@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a337f2539b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1 id="title">Login</h1>
+            <!-- Error message will be shown here -->
+            {{#if errorMessage}}
+                <p style="color: red;">{{errorMessage}}</p>
+            {{/if}}
+            <form id="authForm" action="/login" method="post">
+                <div class="input-group">
+                    <div class="input-field" id="nameField">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" name="name" id="nameInput" placeholder="Name">
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" name="email" id="emailInput" placeholder="Email" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="password" id="passwordInput" placeholder="Password" required>
+                    </div>
+                    <p id="forgotPassword" style="display: none;">Forgot password? <a href="#">Click Here</a></p>
+                </div>
+                <div class="btn-field">
+                    <button type="submit" id="authBtn">Sign In</button>
+                    <button type="button" id="toggleAuthBtn">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Toggle between Login and Sign Up form
+        const authBtn = document.getElementById('authBtn');
+        const toggleAuthBtn = document.getElementById('toggleAuthBtn');
+        const title = document.getElementById('title');
+        const nameField = document.getElementById('nameField');
+        const forgotPassword = document.getElementById('forgotPassword');
+        let isLogin = true; // Track whether it's in login or signup mode
+
+        toggleAuthBtn.onclick = function () {
+            if (isLogin) {
+                // Switch to Sign Up
+                title.innerHTML = "Sign Up";
+                authBtn.innerHTML = "Sign Up";
+                toggleAuthBtn.innerHTML = "Sign In";
+                nameField.style.display = "block";
+                authForm.action = "/signup"; // Change form action to sign up
+                forgotPassword.style.display = "none"; // Hide forgot password in sign-up mode
+            } else {
+                // Switch to Login
+                title.innerHTML = "Login";
+                authBtn.innerHTML = "Sign In";
+                toggleAuthBtn.innerHTML = "Sign Up";
+                nameField.style.display = "none"; // Hide the name field for login
+                authForm.action = "/login"; // Change form action to login
+                forgotPassword.style.display = "block"; // Show forgot password in login mode
+            }
+            isLogin = !isLogin; // Toggle the state
+        };
+
+        // Initial setup for login
+        nameField.style.display = "none"; // Initially hide the name field
+        forgotPassword.style.display = "block";
+    </script>
+</body>
+</html>
